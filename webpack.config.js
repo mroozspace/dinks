@@ -52,6 +52,11 @@ module.exports = (env, { mode }) => ({
       },
     ],
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack Starter',
