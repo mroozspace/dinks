@@ -12,10 +12,18 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8080,
+    port: 9090,
   },
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -53,12 +61,17 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              limit: 50000,
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true, // webpack@2.x and newer
             },
           },
         ],
@@ -67,7 +80,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack Starter',
+      template: './src/index.html',
+      chunks: ['page1'],
+      filename: './index.html',
     }),
   ],
 }

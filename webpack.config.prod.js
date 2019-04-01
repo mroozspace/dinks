@@ -13,6 +13,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: true,
+            },
+          },
+        ],
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
@@ -58,9 +69,39 @@ module.exports = {
       },
     ],
   },
+  rules: [{
+    test: /\.(gif|png|jpe?g|svg)$/i,
+    use: [
+      'file-loader',
+      {
+        loader: 'image-webpack-loader',
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65,
+          },
+          optipng: {
+            enabled: false,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4,
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+          webp: {
+            quality: 75,
+          },
+        },
+      },
+    ],
+  }],
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack Starter',
+      template: './src/index.html',
+      chunks: ['page1'],
+      filename: './index.html',
       minify: true,
     }),
     new MiniCssExtractPlugin({
