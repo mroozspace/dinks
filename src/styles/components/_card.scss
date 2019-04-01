@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 255px;
+  position: relative;
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+  position: relative;
+
+  &__header {
+    font-weight: 800;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: $white;
+    user-select: none;
+    font-size: $h1;
+  }
+
+  &__image {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+  
+    @include on-event {
+      &::after {
+        animation: showBorder $globalTransition both;
+      }
+    }
+  }
+}

@@ -1,3 +1,13 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+.header {
+  &__links {
+    display: flex;
+    font-size: $basicText;
+    margin: 5px;
+    margin-bottom: 55px;
+    padding: 0;
+    justify-content: space-between;
+  }
+}

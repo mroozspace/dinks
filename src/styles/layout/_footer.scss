@@ -1,3 +1,50 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
+
+.footer {
+  margin: 0 auto;
+  max-width: $mainContainerMaxWidth;
+  display: flex;
+  padding: 12px 35px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $basicText;
+
+  &__contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .contact {
+      &__text {
+        opacity: $inactiveOpacity;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .social {
+      &__text {
+        opacity: $inactiveOpacity;
+        margin-right: 18px;
+      }
+
+      &__img {
+        display: flex;
+        width: 12px;
+        height: 12px;
+        margin: 0 7px;
+        @include opacity-transition($inactiveOpacity, $activeOpacity, $globalTransition);
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

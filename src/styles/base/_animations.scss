@@ -1,0 +1,19 @@
+@keyframes showBorder {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+    border: 3px solid transparent;
+  }
+
+  50% {
+    opacity: .3;
+    transform: scale(.98);
+    border: 3px solid #ffe1b5;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    border: 3px solid #ffe1b5;
+  }
+}

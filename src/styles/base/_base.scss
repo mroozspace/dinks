@@ -8,6 +8,14 @@
 html {
   box-sizing: border-box;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
 
 /**
  * Make all elements from the DOM inherit from the parent box-sizing
@@ -25,11 +33,10 @@ html {
  * Basic styles for links
  */
 a {
-  color: $brand-color;
+  color: $linkColor;
   text-decoration: none;
 
   @include on-event {
-    color: $text-color;
     text-decoration: underline;
   }
 }

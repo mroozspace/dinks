@@ -23,6 +23,15 @@
   }
 }
 
+@mixin opacity-transition($inactiveOpacity, $activeOpacity, $transition) {
+  opacity: $inactiveOpacity;
+
+  @include on-event {
+    opacity: $activeOpacity;
+    transition: $transition;
+  }
+}
+
 /// Make a context based selector a little more friendly
 /// @author Hugo Giraudel
 /// @param {String} $context
@@ -31,4 +40,3 @@
     @content;
   }
 }
-

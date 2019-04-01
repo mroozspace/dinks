@@ -18,13 +18,23 @@
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
-  max-width: $max-width; /* 1 */
-  margin-left: auto; /* 2 */
-  margin-right: auto; /* 2 */
-  padding-left: 20px; /* 3 */
-  padding-right: 20px; /* 3 */
-  width: 100%; /* 1 */
- }
+  width: 100%;
+  position: relative;
+  margin: $containerMargin;
+  padding: $containerPadding;
+  &--main {
+    position: relative;
+    background-color: $mainContainerBgColor;
+    margin: $mainContainerMargin;
+    padding: $mainContainerPadding;
+    background-color: $mainContainerBgColor;
+    max-width: $mainContainerMaxWidth;
+  }
+  &--content {
+    max-width: 900px;
+    margin: 70px auto;
+  }
+}
 
 /**
  * Hide text while making it readable for screen readers
