@@ -39,7 +39,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.s(c|a)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -57,46 +57,38 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
+            options: {},
+          },
+          {
+            loader: 'image-webpack-loader',
             options: {
-              limit: 50000,
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75,
+              },
             },
           },
         ],
       },
     ],
   },
-  rules: [{
-    test: /\.(gif|png|jpe?g|svg)$/i,
-    use: [
-      'file-loader',
-      {
-        loader: 'image-webpack-loader',
-        options: {
-          mozjpeg: {
-            progressive: true,
-            quality: 65,
-          },
-          optipng: {
-            enabled: false,
-          },
-          pngquant: {
-            quality: '65-90',
-            speed: 4,
-          },
-          gifsicle: {
-            interlaced: false,
-          },
-          webp: {
-            quality: 75,
-          },
-        },
-      },
-    ],
-  }],
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
